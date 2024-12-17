@@ -1,0 +1,149 @@
+.quiz-form {
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  flex-direction: column;
+  border-radius: 35px;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+  padding: 40px 20px;
+  margin: auto auto;
+  align-items: center;
+  height: auto;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  font-size: 16px;
+  box-sizing: border-box;
+  gap: 15px;
+}
+
+.button {
+  background-color: #222;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  height: 44px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  max-width: 400px;
+}
+
+.button:hover,
+.button:focus {
+  opacity: 0.75;
+}
+
+label,
+select {
+  font-size: 16px;
+  width: 100%;
+  max-width: 400px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+select {
+  padding: 0 10px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M1 4l5 5 5-5z' fill='%23888888'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 600px) {
+  .quiz-form {
+    width: 300px;
+    /* margin: 5px auto; */
+    padding: 30px 15px;
+    /* padding: 80px; */
+    border-radius: 20px;
+    font-size: 14px;
+  }
+
+  .button {
+    font-size: 14px;
+    height: 40px;
+    padding: 6px 15px 5px;
+  }
+
+  label,
+  select {
+    font-size: 14px;
+    height: 40px;
+  }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 375px) {
+  .quiz-form {
+    width: 100%;
+    margin: 5px auto;
+    padding: 20px 10px;
+    border-radius: 15px;
+    font-size: 13px;
+  }
+
+  .button {
+    font-size: 13px;
+    height: 36px;
+    padding: 4px 10px 3px;
+  }
+
+  label,
+  select {
+    font-size: 13px;
+    height: 36px;
+  }
+}
+
+/* Very Small Screens */
+@media screen and (max-width: 320px) {
+  .quiz-form {
+    width: 100%;
+    margin: 0;
+    padding: 15px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+
+  .button {
+    font-size: 12px;
+    height: 34px;
+    padding: 3px 8px 2px;
+  }
+
+  label,
+  select {
+    font-size: 12px;
+    height: 34px;
+  }
+}
+
+/* Ensure form is centered and full height on mobile */
+@media screen and (max-width: 600px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+}

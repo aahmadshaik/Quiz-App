@@ -1,0 +1,178 @@
+.login-form {
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  flex-direction: column;
+  row-gap: 30px;
+  border-radius: 35px;
+  padding: 60px 20px;
+  margin: auto auto;
+  align-items: center;
+  height: auto;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input {
+  width: 100%;
+  max-width: 400px;
+  height: 44px;
+  border-radius: 4px;
+  border: 1px solid grey;
+  font-size: 14px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+input::placeholder {
+  color: #888;
+  font-style: italic;
+  font-size: 14px;
+}
+
+input:focus {
+  border-color: black;
+  outline: none;
+}
+
+.button {
+  background-color: #222;
+  border-radius: 4px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 10px 0;
+  height: 44px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  max-width: 400px;
+}
+
+.button:hover,
+.button:focus {
+  opacity: 0.75;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 600px) {
+  .login-form {
+    width: 300px;
+    margin: 10px auto;
+    /* padding: 80px; */
+    row-gap: 20px;
+    border-radius: 20px;
+  }
+
+  h1 {
+    font-size: 20px;
+
+    margin-bottom: 15px;
+  }
+
+  .input {
+    height: 40px;
+    font-size: 12px;
+  }
+
+  input::placeholder {
+    font-size: 10px;
+  }
+
+  .button {
+    font-size: 12px;
+    height: 40px;
+    padding: 6px 15px 5px;
+  }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 375px) {
+  .login-form {
+    width: 100%;
+    margin: 5px auto;
+    padding: 30px 10px;
+    row-gap: 15px;
+    border-radius: 15px;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .input {
+    height: 36px;
+    font-size: 12px;
+  }
+
+  input::placeholder {
+    font-size: 11px;
+  }
+
+  .button {
+    font-size: 13px;
+    height: 36px;
+    padding: 4px 10px 3px;
+  }
+}
+
+/* Very Small Screens */
+@media screen and (max-width: 320px) {
+  .login-form {
+    width: 100%;
+    margin: 0;
+    padding: 20px 10px;
+    row-gap: 10px;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .input {
+    height: 34px;
+    font-size: 11px;
+  }
+
+  .button {
+    font-size: 12px;
+    height: 34px;
+    padding: 3px 8px 2px;
+  }
+}
+
+/* Ensure form is centered and full height on mobile */
+@media screen and (max-width: 600px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+}

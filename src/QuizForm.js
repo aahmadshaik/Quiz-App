@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import "./styles/Quiz.css";
 function QuizForm({ onQuizStart }) {
   const [category, setCategory] = useState("9");
   const [difficulty, setDifficulty] = useState("easy");
@@ -19,7 +19,7 @@ function QuizForm({ onQuizStart }) {
   };
 
   return (
-    <form onSubmit={startQuiz} id="quiz-form">
+    <form className="quiz-form" onSubmit={startQuiz} id="quiz-form">
       <label htmlFor="category">Select a category:</label>
       <select
         id="category"
@@ -67,7 +67,9 @@ function QuizForm({ onQuizStart }) {
       </select>
 
       <br />
-      <button type="submit">Start Quiz</button>
+      <button className="button" type="submit">
+        Start Quiz
+      </button>
     </form>
   );
 }

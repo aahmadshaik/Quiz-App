@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
+import "./styles/QuizContainer.css";
 
 function QuizContainer({
   quizData,
@@ -13,22 +14,45 @@ function QuizContainer({
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [correctAnswer, setCorrectAnswer] = useState(null);
 
+  // Randomize answers for each question
+  const randomizedAnswers = useMemo(() => {
+    return quizData.map((question) => {
+      // Combine incorrect and correct answers
+      const allAnswers = [
+        ...question.incorrect_answers,
+        question.correct_answer,
+      ];
+
+      // Fisher-Yates shuffle algorithm
+      for (let i = allAnswers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [allAnswers[i], allAnswers[j]] = [allAnswers[j], allAnswers[i]];
+      }
+
+      return {
+        ...question,
+        shuffledAnswers: allAnswers,
+      };
+    });
+  }, [quizData]);
+
   const handleAnswerClick = (answer) => {
     if (selectedAnswer) return; // Prevent clicking after an answer is selected
 
-    const isCorrect = answer === quizData[currentQuestionIndex].correct_answer;
+    const isCorrect =
+      answer === randomizedAnswers[currentQuestionIndex].correct_answer;
 
     if (isCorrect) {
       setScore(score + 1);
     }
 
     setSelectedAnswer(answer);
-    setCorrectAnswer(quizData[currentQuestionIndex].correct_answer);
+    setCorrectAnswer(randomizedAnswers[currentQuestionIndex].correct_answer);
 
     // Move to the next question after a short delay
     setTimeout(() => {
       const nextQuestionIndex = currentQuestionIndex + 1;
-      if (nextQuestionIndex < quizData.length) {
+      if (nextQuestionIndex < randomizedAnswers.length) {
         setCurrentQuestionIndex(nextQuestionIndex);
         setSelectedAnswer(null);
         setCorrectAnswer(null);
@@ -46,18 +70,22 @@ function QuizContainer({
     setCorrectAnswer(null);
   };
 
+  // Calculate percentage
+  const calculatePercentage = () => {
+    return Math.round((score / numQuestions) * 100);
+  };
+
   return (
     <div id="quiz-container">
       {!showScore ? (
         <div className="question">
           <h2>
             Question {currentQuestionIndex + 1}:{" "}
-            {quizData[currentQuestionIndex].question}
+            {randomizedAnswers[currentQuestionIndex].question}
           </h2>
           <ul>
-            {quizData[currentQuestionIndex].incorrect_answers
-              .concat(quizData[currentQuestionIndex].correct_answer)
-              .map((answer, index) => (
+            {randomizedAnswers[currentQuestionIndex].shuffledAnswers.map(
+              (answer, index) => (
                 <li
                   key={index}
                   className={
@@ -76,23 +104,25 @@ function QuizContainer({
                 >
                   {answer}
                 </li>
-              ))}
+              )
+            )}
           </ul>
         </div>
       ) : (
-        <div>
+        <div className="score-container">
           <h2>
-            {username}, your score is {score} out of {numQuestions}
+            {username}, your score is {calculatePercentage()}%
+            <br />({score} out of {numQuestions} questions)
           </h2>
-          <button onClick={restartQuiz}>Play Again</button>
+          <button className="login" onClick={restartQuiz}>
+            Play Again
+          </button>
           <button className="logout" onClick={onLogout}>
             Logout
           </button>{" "}
-          {/* Logout button */}
           <button className="back-to-quiz-form" onClick={onBackToQuizForm}>
             Back to Quiz Form
-          </button>{" "}
-          {/* Back to Quiz Form button */}
+          </button>
         </div>
       )}
     </div>
